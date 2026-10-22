@@ -1,55 +1,14 @@
-import HeadCard from './components/HeadCard'
-import ComicCard from './components/ComicCard'
-import { heads, coHeads, members } from './data/team'
-import './App.css'
-
-function Group({ id, title, people, Card, gridClass, variant = '' }) {
-  return (
-    <section className={`tp-group ${variant}`} aria-labelledby={id}>
-      {title && (
-        <h2 className="tp-group__title" id={id}>
-          <span>{title}</span>
-        </h2>
-      )}
-      <div className={`tp-grid ${gridClass}`}>
-        {people.map((person, i) => (
-          <Card key={`${person.name}-${i}`} person={person} />
-        ))}
-      </div>
-    </section>
-  )
-}
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import TeamsPage from './pages/TeamsPage'
+import TimelinePage from './pages/TimelinePage'
 
 export default function App() {
-  const teamMembers = [...coHeads, ...members]
-
   return (
-    <main className="tp-page">
-      <div className="tp-filmstrip" aria-hidden="true"><span /></div>
-      <div className="tp-page__content">
-        <header className="tp-hero">
-          <h1 className="tp-hero__title"><span className="tp-hero__word">Teams</span></h1>
-          <p className="tp-hero__sub">EVENT HEADS</p>
-        </header>
-
-        <Group
-          id="tp-heads"
-          title=""
-          people={heads}
-          Card={HeadCard}
-          gridClass="tp-grid--heads"
-          variant="tp-group--heads"
-        />
-
-        <Group
-          id="tp-team"
-          title="CO-HEADS AND MEMBERS"
-          people={teamMembers}
-          Card={ComicCard}
-          gridClass="tp-grid--comic"
-          variant="tp-group--members"
-        />
-      </div>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TeamsPage />} />
+        <Route path="/timeline" element={<TimelinePage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
