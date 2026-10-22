@@ -1,0 +1,184 @@
+/* ── Heads card: blue blueprint card → golden card on hover/focus ── */
+.tp-head {
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 582 / 860;
+  cursor: pointer;
+  outline: none;
+}
+/* the container only sizes the card; visuals live on the inner element
+   because an element can't use its own cqw units */
+.tp-head__card {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+  will-change: transform;
+}
+.tp-head:hover .tp-head__card,
+.tp-head:focus-within .tp-head__card {
+  transform: translateY(-1.5%) scale(1.035);
+  filter: drop-shadow(0 0 3.2cqw rgba(255, 190, 40, 0.8))
+    drop-shadow(0 0 9cqw rgba(255, 160, 20, 0.45));
+}
+
+.tp-head__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.tp-head__rim,
+.tp-head__edge {
+  fill: none;
+  stroke-linejoin: round;
+  transition: stroke 0.35s ease, stroke-opacity 0.35s ease;
+}
+.tp-head__rim {
+  stroke: #ffe9a3;
+  stroke-width: 22;
+  stroke-opacity: 0;
+}
+.tp-head__edge {
+  stroke: #fff;
+  stroke-width: 15;
+}
+.tp-head:hover .tp-head__rim,
+.tp-head:focus-within .tp-head__rim {
+  stroke-opacity: 1;
+}
+.tp-head:hover .tp-head__edge,
+.tp-head:focus-within .tp-head__edge {
+  stroke: #ff9d1c;
+}
+
+.tp-head__logo {
+  position: absolute;
+  left: 6.4%;
+  top: 4.6%;
+  font-size: 6.1cqw;
+}
+
+.tp-head__badge {
+  position: absolute;
+  left: 74.8%;
+  top: 3.9%;
+  width: 25%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #0f78c4, #0a4f8c);
+  border: 1.5cqw solid #fff;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  z-index: 2;
+  transition: border-color 0.35s ease;
+}
+.tp-head__badge svg {
+  width: 56%;
+  height: 56%;
+}
+.tp-head:hover .tp-head__badge,
+.tp-head:focus-within .tp-head__badge {
+  border-color: #ff9d1c;
+}
+
+.tp-head__photo {
+  position: absolute;
+  left: 13.4%;
+  top: 12.9%;
+  width: 76.6%;
+  height: 55.6%;
+  border: 1.5cqw solid #fff;
+  border-radius: 2.6cqw;
+  overflow: hidden;
+  background: #111;
+  transition: border-color 0.35s ease;
+}
+.tp-head__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tp-head:hover .tp-head__photo,
+.tp-head:focus-within .tp-head__photo {
+  border-color: #ff9d1c;
+}
+.tp-head:hover .tp-head__photo img {
+  transform: scale(1.04);
+}
+
+.tp-head__name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 71.2%;
+  margin: 0;
+  text-align: center;
+  font-family: 'Bangers', 'Luckiest Guy', Impact, sans-serif;
+  font-weight: 400;
+  font-size: 13.2cqw;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  transition: color 0.35s ease;
+}
+.tp-head:hover .tp-head__name,
+.tp-head:focus-within .tp-head__name {
+  color: #ffb43c;
+}
+
+.tp-head__role {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 81.4%;
+  margin: 0;
+  text-align: center;
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 4.3cqw;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+
+.tp-head__links {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 86.6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tp-head__links .tp-social {
+  color: #fff;
+  width: 8.8cqw;
+  height: 8.8cqw;
+  display: block;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+.tp-head__links .tp-social svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.tp-head__links .tp-social:hover,
+.tp-head__links .tp-social:focus-visible {
+  transform: translateY(-3px) scale(1.12);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-head,
+  .tp-head * {
+    transition: none !important;
+  }
+}

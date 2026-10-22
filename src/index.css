@@ -1,0 +1,5 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { margin: 0; min-height: 100%; width: 100%; }
+body { background: #454545; }
+img { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
