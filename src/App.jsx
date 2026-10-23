@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TeamsPage from './pages/TeamsPage'
 import TimelinePage from './pages/TimelinePage'
+import FAQsPage from './pages/FAQsPage'
 
 export default function App() {
   return (
@@ -8,6 +9,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<TeamsPage />} />
         <Route path="/timeline" element={<TimelinePage />} />
+        <Route path="/faqs" element={<FAQsPage />} />
+        <Route path="/faq" element={<FAQsPage />} />
       </Routes>
     </BrowserRouter>
   )
