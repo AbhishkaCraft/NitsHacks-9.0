@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ComicDay1Modal from './ComicDay1Modal';
+import ComicDay2Modal from './ComicDay2Modal';
+import ComicDay3Modal from './ComicDay3Modal';
 import helicarrierImg from '../../assets/helicarrier_final.png';
 import quinjetImg from '../../assets/quinjet_final_clean.png';
 import ultronImg from '../../assets/ultron_perfect.png';
@@ -18,11 +20,19 @@ const TARGET_DISTANCES = {
   doom: 2240,   // Just before Doctor Doom badge on bottom rail (x ~ 800, y ~ 346)
 };
 
+// Which comic popup belongs to which character
+const DAY_FOR_TARGET = {
+  ultron: 1,
+  thanos: 2,
+  doom: 3,
+};
+
 export default function TimelineScene() {
   const pathRef = useRef(null);
   const animFrameRef = useRef(null);
   const currentDistRef = useRef(TARGET_DISTANCES.home);
-  const [isDay1Open, setIsDay1Open] = useState(false);
+  // null = no popup, otherwise 1 | 2 | 3
+  const [openDay, setOpenDay] = useState(null);
 
   const [ship, setShip] = useState({
     x: 295,
@@ -97,8 +107,8 @@ export default function TimelineScene() {
 
       // Already at this destination
       if (Math.abs(distanceDiff) < 2) {
-        if (targetKey === 'ultron') {
-          setIsDay1Open(true);
+        if (DAY_FOR_TARGET[targetKey]) {
+          setOpenDay(DAY_FOR_TARGET[targetKey]);
         }
         return;
       }
@@ -159,9 +169,9 @@ export default function TimelineScene() {
             });
           }
 
-          // Open Day 1 comic popup when arriving at Ultron (the first character)
-          if (targetKey === 'ultron') {
-            setIsDay1Open(true);
+          // Open the matching comic popup on arrival (Day 1 Ultron, Day 2 Thanos, Day 3 Doom)
+          if (DAY_FOR_TARGET[targetKey]) {
+            setOpenDay(DAY_FOR_TARGET[targetKey]);
           }
         }
       };
@@ -241,7 +251,7 @@ export default function TimelineScene() {
 
         {/* ── ANIMATED QUINJET SPACECRAFT (Locked to yellow rail at rest and in motion) ── */}
         <div
-          className="absolute z-25 pointer-events-none"
+          className="absolute z-[25] pointer-events-none"
           style={{
             left: `${(ship.x / 1024) * 100}%`,
             top: `${(ship.y / 575) * 100}%`,
@@ -362,12 +372,28 @@ export default function TimelineScene() {
         </p>
       </div>
 
-      {/* ── 4. COMIC DAY 1 POPUP MODAL (Ultron) ── */}
+      {/* ── 4. COMIC POPUP MODALS ── */}
+      {/* Day 1 - Ultron */}
       <ComicDay1Modal
-        isOpen={isDay1Open}
-        onClose={() => setIsDay1Open(false)}
+        isOpen={openDay === 1}
+        onClose={() => setOpenDay(null)}
         onNext={() => moveToCharacter('thanos')}
         onPrev={() => moveToCharacter('home')}
+      />
+
+      {/* Day 2 - Thanos */}
+      <ComicDay2Modal
+        isOpen={openDay === 2}
+        onClose={() => setOpenDay(null)}
+        onNext={() => moveToCharacter('doom')}
+        onPrev={() => moveToCharacter('ultron')}
+      />
+
+      {/* Day 3 - Doctor Doom */}
+      <ComicDay3Modal
+        isOpen={openDay === 3}
+        onClose={() => setOpenDay(null)}
+        onPrev={() => moveToCharacter('thanos')}
       />
 
     </div>
