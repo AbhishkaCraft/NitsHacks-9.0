@@ -17,7 +17,9 @@ const TRACKS = [
       'Algorithmic mastery, data structures, competitive programming, and optimization challenges.',
     tilt: '-rotate-[5deg]',
     zIndex: 'z-10',
-    hoverTilt: 'hover:-rotate-[3deg]',
+    hoverTilt: 'hover:-rotate-[1deg]',
+    hoverScale: 'hover:scale-115 sm:hover:scale-118 md:hover:scale-120',
+    hoverTranslate: 'hover:-translate-y-3 sm:hover:-translate-y-4',
   },
   {
     id: 'software',
@@ -36,6 +38,8 @@ const TRACKS = [
     tilt: '-rotate-[0.5deg]',
     zIndex: 'z-20',
     hoverTilt: 'hover:rotate-0',
+    hoverScale: 'hover:scale-108 sm:hover:scale-110 md:hover:scale-112',
+    hoverTranslate: 'hover:-translate-y-2 sm:hover:-translate-y-3',
   },
   {
     id: 'uiux',
@@ -53,7 +57,9 @@ const TRACKS = [
       'User-centered interface design, interaction design, creative prototyping, and design systems.',
     tilt: 'rotate-[4.5deg]',
     zIndex: 'z-10',
-    hoverTilt: 'hover:rotate-[3deg]',
+    hoverTilt: 'hover:rotate-[2deg]',
+    hoverScale: 'hover:scale-108 sm:hover:scale-110 md:hover:scale-112',
+    hoverTranslate: 'hover:-translate-y-2 sm:hover:-translate-y-3',
   },
 ];
 
@@ -180,7 +186,7 @@ export default function TrackPage() {
         </div>
 
         {/* Comic Heading */}
-        <div className="relative z-10 mb-2 shrink-0 text-center sm:mb-4">
+        <div className="relative z-20 mb-2 shrink-0 text-center sm:mb-4 pointer-events-none">
           <h2
             className="font-comic text-4xl italic uppercase tracking-wider text-white sm:text-5xl md:text-6xl"
             style={{
@@ -201,7 +207,7 @@ export default function TrackPage() {
               title={`Explore ${track.title}`}
               aria-label={`Explore ${track.title} track`}
               onClick={() => setSelectedTrack(track)}
-              className={`group relative flex cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-transform duration-300 ease-out focus-visible:outline-none ${track.zIndex} ${track.tilt} hover:z-30 hover:-translate-y-3 ${track.hoverTilt}`}
+              className={`group relative flex cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-all duration-300 ease-out focus-visible:outline-none ${track.zIndex} ${track.tilt} hover:z-40 ${track.hoverScale} ${track.hoverTranslate} ${track.hoverTilt}`}
             >
               <img
                 src={track.image}
