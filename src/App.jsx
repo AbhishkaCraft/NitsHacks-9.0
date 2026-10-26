@@ -13,6 +13,7 @@ export default function App() {
         <Route path="/faqs" element={<FAQsPage />} />
         <Route path="/faq" element={<FAQsPage />} />
         <Route path="/tracks" element={<TrackPage />} />
+        <Route path="/track" element={<TrackPage />} />
       </Routes>
     </BrowserRouter>
   )

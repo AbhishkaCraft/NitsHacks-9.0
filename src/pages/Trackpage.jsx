@@ -153,26 +153,27 @@ export default function TrackPage() {
         </div>
 
         {/* Top Section: Navigation Emblems */}
-        <div className="relative z-30 mx-auto mb-6 sm:mb-8 flex w-full max-w-lg shrink-0 items-center justify-center pt-2 sm:pt-4">
-          <div className="absolute top-[28px] sm:top-[34px] md:top-[38px] h-1.5 w-[85%] rounded-full bg-[#facc15] shadow-[0_0_12px_#fde047]" />
+        <div className="relative z-30 mx-auto mb-6 sm:mb-8 flex w-full max-w-lg shrink-0 items-center justify-center px-4 pt-2 sm:pt-4">
+          <div className="relative flex w-full items-center justify-between">
+            {/* Connecting yellow line through exact center of emblem circles */}
+            <div className="pointer-events-none absolute left-2 right-2 top-1/2 -translate-y-1/2 h-1.5 rounded-full bg-[#facc15] shadow-[0_0_12px_#fde047]" />
 
-          <div className="relative z-10 flex w-full items-center justify-between px-2">
             {EMBLEMS.map((emblem) => (
               <div
                 key={emblem.id}
-                className="group relative flex flex-col items-center"
+                className="group relative z-10 flex flex-col items-center justify-center"
               >
                 <button
                   type="button"
                   title={emblem.name}
                   aria-label={`${emblem.name} - ${emblem.label}`}
-                  className={`relative z-20 flex h-11 w-11 sm:h-13 sm:w-13 md:h-15 md:w-15 items-center justify-center overflow-hidden rounded-full border-2 shadow-xl transition-all duration-300 ease-out group-hover:scale-125 group-hover:-translate-y-2 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${emblem.border} ${emblem.bg}`}
+                  className={`relative z-20 flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center overflow-hidden rounded-full border-2 shadow-xl transition-all duration-300 ease-out group-hover:scale-125 group-hover:-translate-y-2 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${emblem.border} ${emblem.bg}`}
                 >
                   <img
                     src={emblem.image}
                     alt={emblem.name}
                     draggable="false"
-                    className="h-full w-full object-contain p-1 transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full object-contain p-1.5 transition-transform duration-300 group-hover:scale-105"
                   />
                 </button>
 
@@ -188,8 +189,10 @@ export default function TrackPage() {
         {/* Comic Heading */}
         <div className="relative z-20 mb-2 shrink-0 text-center sm:mb-4 pointer-events-none">
           <h2
-            className="font-comic text-4xl italic uppercase tracking-wider text-white sm:text-5xl md:text-6xl"
+            className="text-4xl uppercase tracking-wider text-white sm:text-5xl md:text-6xl"
             style={{
+              fontFamily: "'Bangers', Impact, cursive, sans-serif",
+              letterSpacing: '0.05em',
               textShadow:
                 '3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 5px 0 #060b13, 0 7px 0 #000',
             }}
@@ -209,12 +212,15 @@ export default function TrackPage() {
               onClick={() => setSelectedTrack(track)}
               className={`group relative flex cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-all duration-300 ease-out focus-visible:outline-none ${track.zIndex} ${track.tilt} hover:z-40 ${track.hoverScale} ${track.hoverTranslate} ${track.hoverTilt}`}
             >
+              {/* Backlight color light bloom on hover */}
+              <div className="pointer-events-none absolute inset-x-2 inset-y-4 -z-10 rounded-full bg-gradient-to-tr from-sky-400/0 via-cyan-300/0 to-blue-500/0 opacity-0 blur-3xl transition-all duration-300 group-hover:from-sky-400/50 group-hover:via-cyan-300/40 group-hover:to-blue-500/50 group-hover:opacity-100 group-hover:scale-120" />
+
               <img
                 src={track.image}
                 alt={`${track.title} track`}
                 loading="eager"
                 draggable="false"
-                className="block h-[48svh] sm:h-[54svh] md:h-[58svh] max-h-[550px] w-auto max-w-[34vw] object-contain drop-shadow-[0_16px_24px_rgba(0,0,0,0.85)] filter transition-[filter,transform] duration-300 group-hover:brightness-110 group-hover:drop-shadow-[0_0_24px_rgba(56,189,248,0.5)]"
+                className="block h-[48svh] sm:h-[54svh] md:h-[58svh] max-h-[550px] w-auto max-w-[34vw] object-contain drop-shadow-[0_16px_24px_rgba(0,0,0,0.85)] filter transition-[filter,transform] duration-300 group-hover:brightness-[1.32] group-hover:saturate-[1.85] group-hover:contrast-[1.15] group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.7)] group-hover:drop-shadow-[0_0_50px_rgba(56,189,248,0.95)] group-hover:drop-shadow-[0_0_80px_rgba(56,189,248,0.55)]"
               />
             </button>
           ))}
