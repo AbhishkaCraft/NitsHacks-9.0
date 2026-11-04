@@ -1,5 +1,6 @@
 import HeadCard from '../components/HeadCard'
 import ComicCard from '../components/ComicCard'
+import Navbar from '../components/Navbar'
 import { heads, coHeads, members } from '../data/team'
 import '../App.css'
 
@@ -26,7 +27,13 @@ export default function TeamsPage() {
   return (
     <main className="tp-page">
       <div className="tp-filmstrip" aria-hidden="true"><span /></div>
-      <div className="tp-page__content">
+
+      <div className="tp-page__content !pt-4 sm:!pt-6">
+        {/* Top Universal Navbar seamlessly on top of the comic background */}
+        <header className="relative z-50 w-full mb-6 sm:mb-8">
+          <Navbar activeRoute="/teams" />
+        </header>
+
         <header className="tp-hero">
           <h1 className="tp-hero__title"><span className="tp-hero__word">Teams</span></h1>
           <p className="tp-hero__sub">EVENT HEADS</p>

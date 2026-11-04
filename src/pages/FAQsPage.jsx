@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { faqsData } from '../data/faqs'
+import Navbar from '../components/Navbar'
 import './FAQsPage.css'
 
 export default function FAQsPage() {
@@ -12,6 +13,11 @@ export default function FAQsPage() {
 
   return (
     <main className="faq-page-wrapper">
+      {/* Top Universal Navbar */}
+      <header className="relative z-50 w-full pt-1 sm:pt-2 mb-4 sm:mb-6">
+        <Navbar activeRoute="/faqs" />
+      </header>
+
       <h1 className="faq-title">FAQS</h1>
 
       <div
