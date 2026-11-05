@@ -175,11 +175,12 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[100svh] min-h-[520px] overflow-hidden bg-[#8c0003] flex flex-col justify-between select-none"
+      className="relative w-full h-[100svh] min-h-[520px] overflow-hidden bg-[#1a0002] flex flex-col justify-between select-none"
       style={{
-        backgroundImage: "url('/hero/comic_dots_bg.png')",
-        backgroundRepeat: "repeat",
-        backgroundSize: "64px 64px",
+        backgroundImage: "url('/hero/hero_gradient_bg.png')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <style>{`
