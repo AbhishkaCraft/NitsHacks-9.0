@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from '../components/Navbar';
 
 const TRACKS = [
   {
@@ -153,38 +154,9 @@ export default function TrackPage() {
         </div>
 
         {/* Top Section: Navigation Emblems */}
-        <div className="relative z-30 mx-auto mb-6 sm:mb-8 flex w-full max-w-lg shrink-0 items-center justify-center px-4 pt-2 sm:pt-4">
-          <div className="relative flex w-full items-center justify-between">
-            {/* Connecting yellow line through exact center of emblem circles */}
-            <div className="pointer-events-none absolute left-2 right-2 top-1/2 -translate-y-1/2 h-1.5 rounded-full bg-[#facc15] shadow-[0_0_12px_#fde047]" />
-
-            {EMBLEMS.map((emblem) => (
-              <div
-                key={emblem.id}
-                className="group relative z-10 flex flex-col items-center justify-center"
-              >
-                <button
-                  type="button"
-                  title={emblem.name}
-                  aria-label={`${emblem.name} - ${emblem.label}`}
-                  className={`relative z-20 flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center overflow-hidden rounded-full border-2 shadow-xl transition-all duration-300 ease-out group-hover:scale-125 group-hover:-translate-y-2 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${emblem.border} ${emblem.bg}`}
-                >
-                  <img
-                    src={emblem.image}
-                    alt={emblem.name}
-                    draggable="false"
-                    className="h-full w-full object-contain p-1.5 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </button>
-
-                {/* Hover Text Label */}
-                <span className="pointer-events-none absolute -bottom-7 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded border-2 border-black bg-[#facc15] px-2.5 py-0.5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-black opacity-0 shadow-[2px_2px_0px_#000] transition-all duration-200 ease-out group-hover:translate-y-1 group-hover:opacity-100">
-                  {emblem.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <header className="relative z-40 mx-auto mb-2 sm:mb-4 flex w-full max-w-lg shrink-0 items-center justify-center pt-1 sm:pt-2">
+          <Navbar activeRoute="/tracks" />
+        </header>
 
         {/* Comic Heading */}
         <div className="relative z-20 mb-2 shrink-0 text-center sm:mb-4 pointer-events-none">
