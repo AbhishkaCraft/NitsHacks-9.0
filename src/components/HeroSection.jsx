@@ -482,7 +482,13 @@ export default function HeroSection() {
                 <stop offset="65%" stopColor="#38bdf8" stopOpacity="0.2" />
                 <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
               </linearGradient>
-              <linearGradient id="mobile-bottom-vignette" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient
+                id="mobile-bottom-vignette"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
                 <stop offset="0%" stopColor="#000000" stopOpacity="0" />
                 <stop offset="100%" stopColor="#000000" stopOpacity="0.95" />
               </linearGradient>
@@ -614,8 +620,18 @@ export default function HeroSection() {
               />
 
               {/* Horizontal bridge joint extending from cantilever platform directly into the beam */}
-              <polygon points="204,295 335,295 335,302 204,302" fill="#0d0d0d" />
-              <line x1="200" y1="298.5" x2="335" y2="298.5" stroke="#222222" strokeWidth="1.2" />
+              <polygon
+                points="204,295 335,295 335,302 204,302"
+                fill="#0d0d0d"
+              />
+              <line
+                x1="200"
+                y1="298.5"
+                x2="335"
+                y2="298.5"
+                stroke="#222222"
+                strokeWidth="1.2"
+              />
 
               <g className="avengers-logo-complete" fill="#ffffff">
                 <circle
@@ -626,7 +642,10 @@ export default function HeroSection() {
                   stroke="#ffffff"
                   strokeWidth="4.5"
                 />
-                <polygon points="107,248 111,248 99,292 94,292" fill="#ffffff" />
+                <polygon
+                  points="107,248 111,248 99,292 94,292"
+                  fill="#ffffff"
+                />
                 <polygon
                   points="107,248 111,248 122,289 126,293.5 120,293.5 114,289 110,270"
                   fill="#ffffff"
@@ -668,7 +687,11 @@ export default function HeroSection() {
             />
 
             {/* E. Foreground buildings inside beam for a unified joint skyline */}
-            <g clipPath="url(#mobile-beam-clip)" opacity="0.65" className="mobile-skyline-near pointer-events-none">
+            <g
+              clipPath="url(#mobile-beam-clip)"
+              opacity="0.65"
+              className="mobile-skyline-near pointer-events-none"
+            >
               {renderMobileStrip(mobileNearCity, "#0a2233")}
             </g>
 
