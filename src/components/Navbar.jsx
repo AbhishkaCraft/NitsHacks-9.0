@@ -57,6 +57,7 @@ export const NAV_EMBLEMS = [
 export default function Navbar({ activeRoute } = {}) {
   const location = useLocation();
   const [isHidden, setIsHidden] = useState(false);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
 
   useEffect(() => {
     const handleHide = (e) => setIsHidden(Boolean(e.detail));
@@ -64,23 +65,53 @@ export default function Navbar({ activeRoute } = {}) {
     return () => window.removeEventListener('set-navbar-hidden', handleHide);
   }, []);
 
+  const currentPath = activeRoute || location?.pathname || '/';
+  const isTeamsPage = currentPath.startsWith('/teams');
+
+  // Track scroll position on teams page: keep navbar only when at the top, hide while scrolled down
+  useEffect(() => {
+    if (!isTeamsPage) {
+      setIsScrolledDown(false);
+      return;
+    }
+
+    const handleScroll = (e) => {
+      const scrollY =
+        window.pageYOffset ||
+        window.scrollY ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        (e?.target?.scrollTop ?? 0);
+
+      setIsScrolledDown(scrollY > 20);
+    };
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    document.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll, { capture: true });
+      document.removeEventListener('scroll', handleScroll, { capture: true });
+    };
+  }, [isTeamsPage, location?.pathname]);
+
   // Ensure navbar is always reset to visible on route changes
   useEffect(() => {
     setIsHidden(false);
+    setIsScrolledDown(false);
   }, [location?.pathname]);
 
   if (location?.pathname === '/comingsoon') return null;
 
-  const currentPath = activeRoute || location?.pathname || '/';
-  const isAbsolute = currentPath.startsWith('/teams');
+  const shouldHide = isHidden || (isTeamsPage && isScrolledDown);
 
   return (
     <header
-      className={`${
-        isAbsolute ? 'absolute' : 'fixed'
-      } top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-3 sm:pt-4 md:pt-6 transition-all duration-300 ease-in-out ${
-        isHidden
-          ? 'opacity-0 -translate-y-6 pointer-events-none invisible'
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-3 sm:pt-4 md:pt-6 transition-all duration-300 ease-in-out ${
+        shouldHide
+          ? 'opacity-0 -translate-y-8 pointer-events-none invisible'
           : 'opacity-100 translate-y-0'
       }`}
     >
