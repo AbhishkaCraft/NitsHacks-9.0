@@ -72,10 +72,13 @@ export default function Navbar({ activeRoute } = {}) {
   if (location?.pathname === '/comingsoon') return null;
 
   const currentPath = activeRoute || location?.pathname || '/';
+  const isAbsolute = currentPath.startsWith('/teams');
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-3 sm:pt-4 md:pt-6 transition-all duration-300 ease-in-out ${
+      className={`${
+        isAbsolute ? 'absolute' : 'fixed'
+      } top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-3 sm:pt-4 md:pt-6 transition-all duration-300 ease-in-out ${
         isHidden
           ? 'opacity-0 -translate-y-6 pointer-events-none invisible'
           : 'opacity-100 translate-y-0'
