@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
 
 const TRACKS = [
   {
@@ -153,10 +152,8 @@ export default function TrackPage() {
           <div className="h-[90%] w-20 shrink-0 bg-[#0a1624]" />
         </div>
 
-        {/* Top Section: Navigation Emblems */}
-        <header className="relative z-40 mx-auto mb-2 sm:mb-4 flex w-full max-w-lg shrink-0 items-center justify-center pt-1 sm:pt-2">
-          <Navbar activeRoute="/tracks" />
-        </header>
+        {/* Spacer for fixed top universal navbar */}
+        <div className="w-full shrink-0 h-[72px] sm:h-[84px] md:h-[96px] mb-1 sm:mb-2 pointer-events-none" aria-hidden="true" />
 
         {/* Comic Heading */}
         <div className="relative z-20 mb-2 shrink-0 text-center sm:mb-4 pointer-events-none">

@@ -1,6 +1,5 @@
 // HeroSection.jsx
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import Navbar from "./Navbar";
 import {
   IRONMAN_PATH,
   TOWER_PATH,
@@ -271,9 +270,7 @@ export default function HeroSection() {
         }
       `}</style>
 
-      <header className="hero-nav-header relative z-40 w-full pt-3 sm:pt-4 md:pt-6">
-        <Navbar activeRoute="/" />
-      </header>
+      <div className="hero-nav-header relative z-10 w-full shrink-0 pt-3 sm:pt-4 md:pt-6 h-[76px] sm:h-[92px] md:h-[108px] pointer-events-none" aria-hidden="true" />
 
       <div className="hero-art-wrap relative z-10 flex-1 w-full max-w-[1920px] mx-auto flex items-center justify-center overflow-hidden">
         <div className="relative w-full h-full max-h-[100svh] aspect-[1024/539] flex items-center justify-center">
