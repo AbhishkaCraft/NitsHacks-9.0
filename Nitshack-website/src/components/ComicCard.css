@@ -1,0 +1,219 @@
+/* ── Co-head / member card ──────────────────────────────────────
+   Default: white frame + cloud bursts.
+   Hover / focus: clouds burst away, frame turns teal, the portrait
+   tucks up and a black bar with the social icons slides in.
+   No drop-shadow or glow on purpose.
+   ────────────────────────────────────────────────────────────── */
+.tp-comic {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t: 0.5s;
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 273 / 375;
+  cursor: pointer;
+  outline: none;
+}
+/* container only sizes the card; visuals sit on this inner element */
+.tp-comic__card {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  border-radius: 7.5cqw;
+  padding: 2.6cqw;
+  transition: transform 0.4s var(--ease);
+}
+.tp-comic:hover .tp-comic__card,
+.tp-comic:focus-within .tp-comic__card {
+  transform: translateY(-1.2%) scale(1.025);
+}
+.tp-comic:focus-visible {
+  outline: 3px solid #19e3d4;
+  outline-offset: 4px;
+  border-radius: 28px;
+}
+
+.tp-comic__face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5.4cqw;
+  background: #1fcabd;
+}
+
+/* teal comic background: speed lines + halftone dots */
+.tp-comic__rays {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.26) 0.55cqw, transparent 0.75cqw) 0 0 / 2.8cqw 2.8cqw,
+    repeating-conic-gradient(from 0deg at 50% 78%, rgba(0, 0, 0, 0.7) 0 0.7deg, transparent 0.7deg 6.5deg),
+    linear-gradient(180deg, #25d8cb, #14a99f);
+}
+
+.tp-comic__clouds {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 55%;
+  transition: transform var(--t) var(--ease), opacity calc(var(--t) * 0.8) ease;
+}
+
+/* portrait */
+.tp-comic__shot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6.6cqw;
+  height: 93cqw;
+  padding: 3.4cqw 2.6cqw 0;
+  background: #fff;
+  transition: height var(--t) var(--ease), padding var(--t) var(--ease),
+    background-color var(--t) ease;
+}
+.tp-comic__shotInner {
+  width: 100%;
+  height: 100%;
+  border: 1.1cqw solid #000;
+  background: #222;
+  overflow: hidden;
+  transition: border-radius var(--t) var(--ease);
+}
+.tp-comic__shotInner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  transition: transform calc(var(--t) * 1.2) var(--ease);
+}
+
+/* top pills */
+.tp-comic__pill {
+  position: absolute;
+  top: 2.2cqw;
+  height: 12.4cqw;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.tp-comic__pill--logo {
+  left: 1.6cqw;
+  padding: 0 3.2cqw;
+  border-radius: 6.2cqw;
+  font-size: 4.7cqw;
+  white-space: nowrap;
+}
+.tp-comic__pill--badge {
+  right: 0;
+  width: 28cqw;
+  border-radius: 6.2cqw 0 0 6.2cqw;
+  color: #fff;
+}
+.tp-comic__pill--badge svg {
+  height: 8.6cqw;
+  width: 8.6cqw;
+}
+
+/* text */
+.tp-comic__name,
+.tp-comic__role {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  color: #000;
+  transition: transform var(--t) var(--ease);
+}
+.tp-comic__name {
+  top: 106.3cqw;
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 6.1cqw;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+.tp-comic__role {
+  top: 117.2cqw;
+  font-family: 'Montserrat', 'Comic Neue', sans-serif;
+  font-weight: 600;
+  font-size: 5cqw;
+  line-height: 1.2;
+}
+
+/* footer bar with social icons */
+.tp-comic__links {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 11.2cqw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #000;
+  padding: 0 4cqw;
+  transform: translateY(101%);
+  transition: transform var(--t) var(--ease);
+}
+.tp-comic__links .tp-social {
+  color: #fff;
+  width: 6.6cqw;
+  height: 6.6cqw;
+  display: block;
+  transition: transform 0.2s ease;
+}
+.tp-comic__links .tp-social svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.tp-comic__links .tp-social:hover,
+.tp-comic__links .tp-social:focus-visible {
+  transform: translateY(-2px) scale(1.15);
+  outline: none;
+}
+
+/* hover / focus state */
+.tp-comic:hover .tp-comic__clouds,
+.tp-comic:focus-within .tp-comic__clouds {
+  transform: scale(1.4);
+  opacity: 0;
+}
+.tp-comic:hover .tp-comic__shot,
+.tp-comic:focus-within .tp-comic__shot {
+  height: 81cqw;
+  padding: 3.4cqw 0.8cqw 0;
+  background-color: rgba(255, 255, 255, 0);
+}
+.tp-comic:hover .tp-comic__shotInner,
+.tp-comic:focus-within .tp-comic__shotInner {
+  border-radius: 0 0 5.2cqw 5.2cqw;
+}
+.tp-comic:hover .tp-comic__shotInner img {
+  transform: scale(1.04);
+}
+.tp-comic:hover .tp-comic__name,
+.tp-comic:hover .tp-comic__role,
+.tp-comic:focus-within .tp-comic__name,
+.tp-comic:focus-within .tp-comic__role {
+  transform: translateY(-9.9cqw);
+}
+.tp-comic:hover .tp-comic__links,
+.tp-comic:focus-within .tp-comic__links {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-comic,
+  .tp-comic * {
+    transition-duration: 0.01s !important;
+  }
+}
