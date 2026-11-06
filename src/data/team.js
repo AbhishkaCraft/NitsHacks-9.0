@@ -40,7 +40,8 @@ const comicCard = (name, role) => person(name, role, memberPlaceholder);
 
 // SECTION 1: Coordinators
 export const coordinators = [
-  bigCard("Abhinav Narayan Dev", "Student Coordinator"),
+  bigCard("Anirban Bora", "Chief Coordinator"),
+  bigCard("Abhinav Narayan Dev", "Coordinator"),
   bigCard("Hirak Rajbonshi", "Coordinator"),
   bigCard("Iftikar Hussain", "Coordinator"),
   bigCard("Priyanshu Kashyap", "Coordinator"),
