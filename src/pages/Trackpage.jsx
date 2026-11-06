@@ -6,7 +6,7 @@ const TRACKS = [
     title: "CODING",
     image: "/trackimage/Component34.png",
     popupImage: "/trackimage/coding.png",
-    registerLink: "https://gdgcnits.com",
+    registerLink: "https://unstop.com/hackathons/coding-track-nits-hacks-90-national-institute-of-technology-nit-silchar-1795122",
     buttonCoords: {
       left: "13.5%",
       bottom: "6.5%",
@@ -32,7 +32,7 @@ const TRACKS = [
     title: "SOFTWARE",
     image: "/trackimage/Component35.png",
     popupImage: "/trackimage/software.png",
-    registerLink: "https://gdgcnits.com",
+    registerLink: "https://unstop.com/hackathons/software-track-nits-hacks-90-national-institute-of-technology-nit-silchar-1794955",
     buttonCoords: {
       left: "32%",
       bottom: "2.7%",
@@ -58,7 +58,7 @@ const TRACKS = [
     title: "UI/UX",
     image: "/trackimage/Component36.png",
     popupImage: "/trackimage/ux.png",
-    registerLink: "https://gdgcnits.com",
+    registerLink: "https://unstop.com/competitions/uiux-track-nits-hacks-90-nits-hacks-90-national-institute-of-technology-nit-silchar-1794956",
     buttonCoords: {
       left: "51.5%",
       bottom: "8.5%",
