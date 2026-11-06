@@ -1,6 +1,5 @@
 import SpaceBackground from '../components/Timeline/SpaceBackground'
 import TimelineScene from '../components/Timeline/TimelineScene'
-import Navbar from '../components/Navbar'
 
 export default function TimelinePage() {
   return (
@@ -8,10 +7,8 @@ export default function TimelinePage() {
       {/* Deep Space Background with Stars */}
       <SpaceBackground />
 
-      {/* Top Universal Navbar */}
-      <header className="relative z-50 w-full pt-3 sm:pt-4 md:pt-6">
-        <Navbar activeRoute="/timeline" />
-      </header>
+      {/* Spacer for fixed top universal navbar */}
+      <div className="w-full shrink-0 pt-3 sm:pt-4 md:pt-6 h-[76px] sm:h-[92px] md:h-[108px] pointer-events-none" aria-hidden="true" />
 
       {/* Main Timeline Scene */}
       <div className="relative z-10 w-full flex-1 flex items-center justify-center">
