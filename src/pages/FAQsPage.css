@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 32px);
+  justify-content: flex-start;
+  padding: clamp(100px, 14vh, 136px) clamp(16px, 4vw, 32px) clamp(40px, 6vw, 60px);
   box-sizing: border-box;
 }
 

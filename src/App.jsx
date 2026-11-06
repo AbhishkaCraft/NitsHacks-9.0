@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import TeamsPage from './pages/TeamsPage'
 import TimelinePage from './pages/TimelinePage'
 import FAQsPage from './pages/FAQsPage'
@@ -6,10 +7,25 @@ import TrackPage from './pages/Trackpage'
 import LandingPage from './pages/LandingPage'
 import ComingSoon from './pages/ComingSoon'
 import LoaderPage from './pages/LoaderPage'
+import Navbar from './components/Navbar'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if (typeof document !== 'undefined') {
+      if (document.documentElement) document.documentElement.scrollTop = 0
+      if (document.body) document.body.scrollTop = 0
+    }
+  }, [pathname])
+  return null
+}
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+      <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/comingsoon" element={<ComingSoon />} />

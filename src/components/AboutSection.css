@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap");
+
+.about-section {
+  --red: #ff393f;
+  --panel: #0b0b0b;
+  --cream: #f3f6dc;
+  --gif-bg: #1b1b1b; /* set this to the exact background colour of your GIF */
+
+  position: relative;
+  width: 100%;
+  min-height: 860px;
+  padding: 90px 5% 110px;
+  background: linear-gradient(
+    180deg,
+    #000 0,
+    var(--gif-bg) 170px,
+    var(--gif-bg) 100%
+  );
+  color: var(--cream);
+  overflow: hidden;
+}
+
+.about-section__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  min-height: 680px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 30px;
+}
+
+/* ---------- Reusable stacked panel (red bar on top, 2 ghost layers behind) ---------- */
+.stack {
+  --stepx: 13px;
+  --stepy: 14px;
+  --sx: 1; /* direction the back layers are offset: 1 = right, -1 = left */
+  --sy: 1; /* 1 = down, -1 = up */
+  --bar: 12px;
+  --cut: none;
+
+  position: relative;
+  isolation: isolate;
+}
+
+.stack::before,
+.stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--panel);
+  border: 1px solid rgba(255, 57, 63, 0.45);
+  border-top: var(--bar) solid var(--red);
+  clip-path: var(--cut);
+}
+
+.stack::before {
+  transform: translate(
+    calc(var(--sx) * var(--stepx) * 2),
+    calc(var(--sy) * var(--stepy) * 2)
+  );
+}
+
+.stack::after {
+  transform: translate(
+    calc(var(--sx) * var(--stepx)),
+    calc(var(--sy) * var(--stepy))
+  );
+}
+
+.stack__face {
+  position: relative;
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid rgba(255, 57, 63, 0.45);
+  border-top: var(--bar) solid var(--red);
+  clip-path: var(--cut);
+}
+
+/* ---------- Title (front panel top-left, ghosts go down-right) ---------- */
+.about-title {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: start;
+  width: min(100%, 310px);
+  margin-top: 10px;
+  --stepx: 14px;
+  --stepy: 14px;
+  --bar: 12px;
+}
+
+.about-title__text {
+  padding: 16px 20px 18px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(16px, 1.6vw, 21px);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.about-title__text em {
+  margin-left: 4px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ---------- Gauntlet ---------- */
+.about-gauntlet {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.about-gauntlet img {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  max-height: 760px;
+  object-fit: contain;
+  /* feathers the GIF's edges so no rectangle shows against the page */
+  -webkit-mask-image: radial-gradient(
+    ellipse 74% 74% at 50% 50%,
+    #000 62%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 74% 74% at 50% 50%,
+    #000 62%,
+    transparent 100%
+  );
+}
+
+/* ---------- Description (ghosts go up-left, bottom-left corner cut) ---------- */
+.about-description {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  align-self: center;
+  justify-self: end;
+  width: 100%;
+  max-width: 340px;
+  --sx: -1;
+  --sy: -1;
+  --stepx: 11px;
+  --stepy: 20px;
+  --bar: 14px;
+  --cut: polygon(0 0, 100% 0, 100% 100%, 26px 100%, 0 calc(100% - 26px));
+}
+
+.about-description__content {
+  padding: 34px 20px 38px;
+  text-align: center;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.about-description__content p {
+  margin: 0 0 12px;
+}
+
+.about-description__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- HACKS badge (ghosts go up-left) ---------- */
+.about-brand {
+  grid-column: 3;
+  grid-row: 3;
+  align-self: end;
+  justify-self: end;
+  margin: 0 18px 10px 0;
+  --sx: -1;
+  --sy: -1;
+  --stepx: 10px;
+  --stepy: 16px;
+  --bar: 10px;
+}
+
+.about-brand__text {
+  padding: 16px 30px;
+  font-family: "Orbitron", "Michroma", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  text-align: center;
+}
+
+/* ---------- HUD decoration ---------- */
+.about-deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-deco--left {
+  left: 4%;
+  bottom: 90px;
+  width: 34px;
+}
+
+.about-deco--right {
+  right: 3%;
+  top: 70px;
+  width: 30px;
+}
+
+.about-deco--circuit-left {
+  left: 5%;
+  top: 250px;
+  width: 80px;
+  opacity: 0.85;
+}
+
+.about-deco--circuit-right {
+  right: 4%;
+  bottom: 120px;
+  width: 90px;
+  opacity: 0.85;
+}
+
+.about-tick {
+  width: 6px;
+  background: var(--cream);
+}
+
+.about-tick--a {
+  left: 62%;
+  top: 60px;
+  height: 60px;
+}
+
+.about-tick--b {
+  left: 58%;
+  bottom: 70px;
+  height: 36px;
+}
+
+.about-deco--right-mid {
+  right: 4.5%;
+  top: 330px;
+  width: 22px;
+}
+
+.about-tick--c {
+  left: 59%;
+  top: 70px;
+  height: 80px;
+  width: 4px;
+}
+
+.about-box {
+  left: 63%;
+  top: 70px;
+  width: 22px;
+  height: 56px;
+  border: 1px solid var(--cream);
+  background: none;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .about-section__inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 50px 30px;
+  }
+
+  .about-title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-description {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .about-gauntlet {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .about-gauntlet img {
+    max-height: 520px;
+  }
+
+  .about-brand {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    justify-self: center;
+    margin-right: 0;
+  }
+
+  .about-deco {
+    display: none;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .about-section {
+    min-height: auto;
+    padding: 60px 22px 70px;
+  }
+
+  .about-section__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .about-title {
+    align-self: flex-start;
+    width: min(270px, 85%);
+  }
+
+  .about-title__text {
+    font-size: 17px;
+  }
+
+  .about-gauntlet img {
+    max-width: 340px;
+    max-height: 500px;
+  }
+
+  .about-description {
+    align-self: flex-end;
+    width: min(300px, 88%);
+    margin-right: 14px;
+  }
+
+  .about-description__content {
+    font-size: 12px;
+  }
+
+  .about-brand {
+    align-self: center;
+    margin: 0;
+  }
+
+  .about-brand__text {
+    font-size: 20px;
+  }
+}
