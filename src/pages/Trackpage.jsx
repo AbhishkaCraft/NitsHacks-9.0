@@ -13,13 +13,19 @@ const TRACKS = [
       width: "35%",
       height: "8.5%",
     },
+    textBoxCoords: {
+      left: '50.6%',
+      top: '23.3%',
+      width: '46.2%',
+      height: '70.3%',
+    },
     description:
-      "Algorithmic mastery, data structures, competitive programming, and optimization challenges.",
-    tilt: "-rotate-[5deg]",
-    zIndex: "z-10",
-    hoverTilt: "hover:-rotate-[1deg]",
-    hoverScale: "hover:scale-115 sm:hover:scale-118 md:hover:scale-120",
-    hoverTranslate: "hover:-translate-y-3 sm:hover:-translate-y-4",
+      'Hey Developers! Get ready to assemble your coding skills! NITS HACKS 9.0 is back with its ninth edition, bringing an exciting opportunity for all the coding enthusiasts and problem solvers. We\'re thrilled to introduce the Coding Track, a battleground where logic meets creativity and every challenge tests your limits. Inspired by the strategic brilliance of the Avengers, this track will put your programming skills, algorithmic thinking, and problem-solving abilities to the ultimate test. From cracking complex challenges to crafting optimized solutions, participants will get the chance to showcase their coding prowess and unleash their inner superheroes. So gear up, sharpen your skills, and conquer the coding battlefield for a chance to win exciting cash prizes totaling INR 110K, along with exclusive goodies!',
+    tilt: '-rotate-[5deg]',
+    zIndex: 'z-10',
+    hoverTilt: 'hover:-rotate-[1deg]',
+    hoverScale: 'hover:scale-115 sm:hover:scale-118 md:hover:scale-120',
+    hoverTranslate: 'hover:-translate-y-3 sm:hover:-translate-y-4',
   },
   {
     id: "software",
@@ -33,13 +39,19 @@ const TRACKS = [
       width: "36%",
       height: "8.5%",
     },
+    textBoxCoords: {
+      left: '6.5%',
+      top: '51.7%',
+      width: '87.0%',
+      height: '35.4%',
+    },
     description:
-      "Full-stack engineering, web and mobile applications, scalable microservices, and APIs.",
-    tilt: "-rotate-[0.5deg]",
-    zIndex: "z-20",
-    hoverTilt: "hover:rotate-0",
-    hoverScale: "hover:scale-108 sm:hover:scale-110 md:hover:scale-112",
-    hoverTranslate: "hover:-translate-y-2 sm:hover:-translate-y-3",
+      'Hey Innovators! The multiverse needs your ideas! NITS HACKS 9.0 is back with its ninth edition, bringing an exciting opportunity for aspiring developers to turn their imagination into reality. We\'re thrilled to introduce the Software Track, a platform where innovation meets technology and creativity becomes your greatest superpower. Inspired by the groundbreaking inventions of Stark Industries, this track challenges participants to identify real-world problems and develop impactful software solutions. From building innovative applications to designing functional and scalable systems, participants will get the opportunity to showcase their technical expertise and creative vision. So unleash your inner Tony Stark, bring your ideas to life, and compete for exciting cash prizes totaling INR 130K, along with exclusive goodies!',
+    tilt: '-rotate-[0.5deg]',
+    zIndex: 'z-20',
+    hoverTilt: 'hover:rotate-0',
+    hoverScale: 'hover:scale-108 sm:hover:scale-110 md:hover:scale-112',
+    hoverTranslate: 'hover:-translate-y-2 sm:hover:-translate-y-3',
   },
   {
     id: "uiux",
@@ -53,13 +65,19 @@ const TRACKS = [
       width: "35%",
       height: "8.5%",
     },
+    textBoxCoords: {
+      left: '3.0%',
+      top: '24.1%',
+      width: '46.2%',
+      height: '67.6%',
+    },
     description:
-      "User-centered interface design, interaction design, creative prototyping, and design systems.",
-    tilt: "rotate-[4.5deg]",
-    zIndex: "z-10",
-    hoverTilt: "hover:rotate-[2deg]",
-    hoverScale: "hover:scale-108 sm:hover:scale-110 md:hover:scale-112",
-    hoverTranslate: "hover:-translate-y-2 sm:hover:-translate-y-3",
+      'Hey Designers! It\'s time to bring your creative superpowers to life! NITS HACKS 9.0 is back with its ninth edition, bringing an exciting opportunity for creative minds and aspiring designers. We\'re thrilled to introduce the UI/UX Track, where imagination meets innovation and every design tells a story. Inspired by the futuristic interfaces and technological brilliance of the Marvel Universe, this track challenges participants to create visually stunning, intuitive, and user-friendly digital experiences. From crafting seamless interfaces to designing engaging user journeys, participants will get the opportunity to showcase their creativity, design thinking, and problem-solving skills. So unleash your inner Tony Stark, think beyond boundaries, and design something extraordinary for a chance to win exciting cash prizes totaling INR 60K, along with exclusive goodies!',
+    tilt: 'rotate-[4.5deg]',
+    zIndex: 'z-10',
+    hoverTilt: 'hover:rotate-[2deg]',
+    hoverScale: 'hover:scale-108 sm:hover:scale-110 md:hover:scale-112',
+    hoverTranslate: 'hover:-translate-y-2 sm:hover:-translate-y-3',
   },
 ];
 
@@ -105,7 +123,6 @@ const EMBLEMS = [
     bg: "bg-[#7f1d1d]",
   },
 ];
-
 export default function TrackPage() {
   const [selectedTrack, setSelectedTrack] = useState(null);
 
@@ -133,6 +150,28 @@ export default function TrackPage() {
 
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-[#070e17]">
+      {/* Styles for comic modal scrollbar */}
+      <style>{`
+        .track-modal-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: #ef4444 #e9e7de;
+        }
+        .track-modal-scroll::-webkit-scrollbar {
+          width: 5px;
+        }
+        .track-modal-scroll::-webkit-scrollbar-track {
+          background: #e9e7de;
+          border-radius: 3px;
+        }
+        .track-modal-scroll::-webkit-scrollbar-thumb {
+          background: #ef4444;
+          border-radius: 3px;
+        }
+        .track-modal-scroll::-webkit-scrollbar-thumb:hover {
+          background: #b91c1c;
+        }
+      `}</style>
+
       {/* Page Content: Tints and lowers contrast smoothly when popup is active without blur */}
       <div
         className={`flex h-full w-full flex-col items-center justify-between px-4 py-4 sm:py-6 transition-[filter] duration-300 ${
@@ -231,7 +270,7 @@ export default function TrackPage() {
               type="button"
               aria-label="Close popup"
               onClick={() => setSelectedTrack(null)}
-              className="absolute -right-3 -top-3 z-30 flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-[#b91c1c] text-xl font-black text-white shadow-[2px_2px_0px_#000] transition-transform hover:scale-110 hover:bg-red-700 focus-visible:outline-none"
+              className="absolute -right-3 -top-3 z-30 flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-[#b91c1c] text-xl font-black text-white shadow-[2px_2px_0px_#000] transition-transform hover:scale-110 hover:bg-red-700 focus-visible:outline-none cursor-pointer"
             >
               ×
             </button>
@@ -241,8 +280,49 @@ export default function TrackPage() {
               <img
                 src={selectedTrack.popupImage || selectedTrack.image}
                 alt={`${selectedTrack.title} poster`}
-                className="block max-h-[80vh] w-auto max-w-full object-contain"
+                className="block max-h-[80vh] w-auto max-w-full object-contain select-none"
+                draggable="false"
               />
+
+              {/* Dynamic Description Box */}
+              {selectedTrack.description && selectedTrack.textBoxCoords && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: selectedTrack.textBoxCoords.left,
+                    top: selectedTrack.textBoxCoords.top,
+                    width: selectedTrack.textBoxCoords.width,
+                    height: selectedTrack.textBoxCoords.height,
+                  }}
+                  className="z-10 flex flex-col border-2 sm:border-[3px] border-black bg-[#f9f7ed] p-1.5 sm:p-2.5 md:p-3.5 text-black shadow-inner"
+                >
+                  <h3
+                    className="shrink-0 select-none text-xs sm:text-lg md:text-xl lg:text-2xl font-black uppercase tracking-wide text-black mb-1 sm:mb-1.5"
+                    style={{
+                      fontFamily: '"Impact", "Bebas Neue", "Arial Black", sans-serif',
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    {selectedTrack.title} TRACK
+                  </h3>
+
+                  <div
+                    tabIndex={0}
+                    role="region"
+                    aria-label={`${selectedTrack.title} track description`}
+                    className="track-modal-scroll min-h-0 flex-1 overflow-y-auto pr-1 text-left sm:text-justify text-[9.5px] leading-[1.3] sm:text-[11.5px] sm:leading-snug md:text-[12.5px] md:leading-normal lg:text-[13.5px] lg:leading-relaxed text-[#111] focus:outline-none"
+                    style={{
+                      fontFamily: '"Comic Neue", "Comic Sans MS", cursive, sans-serif',
+                      scrollbarWidth: 'thin',
+                      scrollbarColor: '#ef4444 #e9e7de',
+                    }}
+                  >
+                    <p className="font-semibold sm:font-bold">
+                      {selectedTrack.description}
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Pop-out Register Button */}
               {selectedTrack.registerLink && selectedTrack.buttonCoords && (
