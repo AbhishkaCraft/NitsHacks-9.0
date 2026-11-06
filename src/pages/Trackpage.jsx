@@ -1,108 +1,108 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const TRACKS = [
   {
-    id: 'coding',
-    title: 'CODING',
-    image: '/trackimage/Component34.png',
-    popupImage: '/trackimage/coding.png',
-    registerLink: 'https://gdgcnits.com',
+    id: "coding",
+    title: "CODING",
+    image: "/trackimage/Component34.png",
+    popupImage: "/trackimage/coding.png",
+    registerLink: "https://gdgcnits.com",
     buttonCoords: {
-      left: '13.5%',
-      bottom: '6.5%',
-      width: '35%',
-      height: '8.5%',
+      left: "13.5%",
+      bottom: "6.5%",
+      width: "35%",
+      height: "8.5%",
     },
     description:
-      'Algorithmic mastery, data structures, competitive programming, and optimization challenges.',
-    tilt: '-rotate-[5deg]',
-    zIndex: 'z-10',
-    hoverTilt: 'hover:-rotate-[1deg]',
-    hoverScale: 'hover:scale-115 sm:hover:scale-118 md:hover:scale-120',
-    hoverTranslate: 'hover:-translate-y-3 sm:hover:-translate-y-4',
+      "Algorithmic mastery, data structures, competitive programming, and optimization challenges.",
+    tilt: "-rotate-[5deg]",
+    zIndex: "z-10",
+    hoverTilt: "hover:-rotate-[1deg]",
+    hoverScale: "hover:scale-115 sm:hover:scale-118 md:hover:scale-120",
+    hoverTranslate: "hover:-translate-y-3 sm:hover:-translate-y-4",
   },
   {
-    id: 'software',
-    title: 'SOFTWARE',
-    image: '/trackimage/Component35.png',
-    popupImage: '/trackimage/software.png',
-    registerLink: 'https://gdgcnits.com',
+    id: "software",
+    title: "SOFTWARE",
+    image: "/trackimage/Component35.png",
+    popupImage: "/trackimage/software.png",
+    registerLink: "https://gdgcnits.com",
     buttonCoords: {
-      left: '32%',
-      bottom: '2.7%',
-      width: '36%',
-      height: '8.5%',
+      left: "32%",
+      bottom: "2.7%",
+      width: "36%",
+      height: "8.5%",
     },
     description:
-      'Full-stack engineering, web and mobile applications, scalable microservices, and APIs.',
-    tilt: '-rotate-[0.5deg]',
-    zIndex: 'z-20',
-    hoverTilt: 'hover:rotate-0',
-    hoverScale: 'hover:scale-108 sm:hover:scale-110 md:hover:scale-112',
-    hoverTranslate: 'hover:-translate-y-2 sm:hover:-translate-y-3',
+      "Full-stack engineering, web and mobile applications, scalable microservices, and APIs.",
+    tilt: "-rotate-[0.5deg]",
+    zIndex: "z-20",
+    hoverTilt: "hover:rotate-0",
+    hoverScale: "hover:scale-108 sm:hover:scale-110 md:hover:scale-112",
+    hoverTranslate: "hover:-translate-y-2 sm:hover:-translate-y-3",
   },
   {
-    id: 'uiux',
-    title: 'UI/UX',
-    image: '/trackimage/Component36.png',
-    popupImage: '/trackimage/ux.png',
-    registerLink: 'https://gdgcnits.com',
+    id: "uiux",
+    title: "UI/UX",
+    image: "/trackimage/Component36.png",
+    popupImage: "/trackimage/ux.png",
+    registerLink: "https://gdgcnits.com",
     buttonCoords: {
-      left: '51.5%',
-      bottom: '8.5%',
-      width: '35%',
-      height: '8.5%',
+      left: "51.5%",
+      bottom: "8.5%",
+      width: "35%",
+      height: "8.5%",
     },
     description:
-      'User-centered interface design, interaction design, creative prototyping, and design systems.',
-    tilt: 'rotate-[4.5deg]',
-    zIndex: 'z-10',
-    hoverTilt: 'hover:rotate-[2deg]',
-    hoverScale: 'hover:scale-108 sm:hover:scale-110 md:hover:scale-112',
-    hoverTranslate: 'hover:-translate-y-2 sm:hover:-translate-y-3',
+      "User-centered interface design, interaction design, creative prototyping, and design systems.",
+    tilt: "rotate-[4.5deg]",
+    zIndex: "z-10",
+    hoverTilt: "hover:rotate-[2deg]",
+    hoverScale: "hover:scale-108 sm:hover:scale-110 md:hover:scale-112",
+    hoverTranslate: "hover:-translate-y-2 sm:hover:-translate-y-3",
   },
 ];
 
 const EMBLEMS = [
   {
-    id: 'avengers',
-    name: 'Avengers',
-    label: 'Home',
-    image: '/trackimage/Component29.png',
-    border: 'border-[#334155]',
-    bg: 'bg-[#182330]',
+    id: "avengers",
+    name: "Avengers",
+    label: "Home",
+    image: "/trackimage/Component29.png",
+    border: "border-[#334155]",
+    bg: "bg-[#182330]",
   },
   {
-    id: 'f4',
-    name: 'Fantastic Four',
-    label: 'Tracks',
-    image: '/trackimage/Component30.png',
-    border: 'border-white ring-2 sm:ring-4 ring-[#38bdf8]',
-    bg: 'bg-[#0284c7]',
+    id: "f4",
+    name: "Fantastic Four",
+    label: "Tracks",
+    image: "/trackimage/Component30.png",
+    border: "border-white ring-2 sm:ring-4 ring-[#38bdf8]",
+    bg: "bg-[#0284c7]",
   },
   {
-    id: 'xmen',
-    name: 'X-Men',
-    label: 'Timeline',
-    image: '/trackimage/Component31.png',
-    border: 'border-[#450a0a]',
-    bg: 'bg-[#b91c1c]',
+    id: "xmen",
+    name: "X-Men",
+    label: "Timeline",
+    image: "/trackimage/Component31.png",
+    border: "border-[#450a0a]",
+    bg: "bg-[#b91c1c]",
   },
   {
-    id: 'shield',
-    name: 'S.H.I.E.L.D.',
-    label: 'Teams',
-    image: '/trackimage/Component32.png',
-    border: 'border-zinc-800',
-    bg: 'bg-[#e2e8f0]',
+    id: "shield",
+    name: "S.H.I.E.L.D.",
+    label: "Teams",
+    image: "/trackimage/Component32.png",
+    border: "border-zinc-800",
+    bg: "bg-[#e2e8f0]",
   },
   {
-    id: 'hydra',
-    name: 'Hydra',
-    label: 'FAQs',
-    image: '/trackimage/Component33.png',
-    border: 'border-[#450a0a]',
-    bg: 'bg-[#7f1d1d]',
+    id: "hydra",
+    name: "Hydra",
+    label: "FAQs",
+    image: "/trackimage/Component33.png",
+    border: "border-[#450a0a]",
+    bg: "bg-[#7f1d1d]",
   },
 ];
 
@@ -111,12 +111,24 @@ export default function TrackPage() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setSelectedTrack(null);
+      if (e.key === "Escape") setSelectedTrack(null);
     };
     if (selectedTrack) {
-      window.addEventListener('keydown', handleKeyDown);
-      return () => window.removeEventListener('keydown', handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
     }
+  }, [selectedTrack]);
+
+  useEffect(() => {
+    const isOpened = Boolean(selectedTrack);
+    window.dispatchEvent(
+      new CustomEvent("set-navbar-hidden", { detail: isOpened }),
+    );
+    return () => {
+      window.dispatchEvent(
+        new CustomEvent("set-navbar-hidden", { detail: false }),
+      );
+    };
   }, [selectedTrack]);
 
   return (
@@ -124,7 +136,9 @@ export default function TrackPage() {
       {/* Page Content: Tints and lowers contrast smoothly when popup is active without blur */}
       <div
         className={`flex h-full w-full flex-col items-center justify-between px-4 py-4 sm:py-6 transition-[filter] duration-300 ${
-          selectedTrack ? 'contrast-75 brightness-75' : 'contrast-100 brightness-100'
+          selectedTrack
+            ? "contrast-75 brightness-75"
+            : "contrast-100 brightness-100"
         }`}
       >
         {/* Background Image */}
@@ -132,9 +146,9 @@ export default function TrackPage() {
           className="pointer-events-none absolute inset-0 z-[-2]"
           style={{
             backgroundImage: "url('/trackimage/trackbackground.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         />
 
@@ -153,7 +167,10 @@ export default function TrackPage() {
         </div>
 
         {/* Spacer for fixed top universal navbar */}
-        <div className="w-full shrink-0 h-[72px] sm:h-[84px] md:h-[96px] mb-1 sm:mb-2 pointer-events-none" aria-hidden="true" />
+        <div
+          className="w-full shrink-0 h-[72px] sm:h-[84px] md:h-[96px] mb-1 sm:mb-2 pointer-events-none"
+          aria-hidden="true"
+        />
 
         {/* Comic Heading */}
         <div className="relative z-20 mb-2 shrink-0 text-center sm:mb-4 pointer-events-none">
@@ -161,9 +178,9 @@ export default function TrackPage() {
             className="text-4xl uppercase tracking-wider text-white sm:text-5xl md:text-6xl"
             style={{
               fontFamily: "'Bangers', Impact, cursive, sans-serif",
-              letterSpacing: '0.05em',
+              letterSpacing: "0.05em",
               textShadow:
-                '3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 5px 0 #060b13, 0 7px 0 #000',
+                "3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 5px 0 #060b13, 0 7px 0 #000",
             }}
           >
             TRACKS
@@ -199,7 +216,7 @@ export default function TrackPage() {
       {/* Track Image Popup Modal */}
       {selectedTrack && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#070e17]/65 p-4 transition-colors"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#070e17]/65 p-4 transition-colors"
           onClick={() => setSelectedTrack(null)}
         >
           <div
@@ -235,7 +252,7 @@ export default function TrackPage() {
                   rel="noopener noreferrer"
                   aria-label={`Register for ${selectedTrack.title} track`}
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     left: selectedTrack.buttonCoords.left,
                     bottom: selectedTrack.buttonCoords.bottom,
                     width: selectedTrack.buttonCoords.width,
@@ -247,9 +264,9 @@ export default function TrackPage() {
                     className="select-none text-[12px] sm:text-base md:text-lg font-black uppercase"
                     style={{
                       fontFamily: '"Impact", "Arial Black", sans-serif',
-                      letterSpacing: '0.04em',
+                      letterSpacing: "0.04em",
                       textShadow:
-                        '1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000',
+                        "1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000",
                     }}
                   >
                     Register now!

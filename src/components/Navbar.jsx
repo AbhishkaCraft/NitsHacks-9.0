@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const NAV_EMBLEMS = [
@@ -56,12 +56,31 @@ export const NAV_EMBLEMS = [
 
 export default function Navbar({ activeRoute } = {}) {
   const location = useLocation();
+  const [isHidden, setIsHidden] = useState(false);
+
+  useEffect(() => {
+    const handleHide = (e) => setIsHidden(Boolean(e.detail));
+    window.addEventListener('set-navbar-hidden', handleHide);
+    return () => window.removeEventListener('set-navbar-hidden', handleHide);
+  }, []);
+
+  // Ensure navbar is always reset to visible on route changes
+  useEffect(() => {
+    setIsHidden(false);
+  }, [location?.pathname]);
+
   if (location?.pathname === '/comingsoon') return null;
 
   const currentPath = activeRoute || location?.pathname || '/';
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-3 sm:pt-4 md:pt-6">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none pt-3 sm:pt-4 md:pt-6 transition-all duration-300 ease-in-out ${
+        isHidden
+          ? 'opacity-0 -translate-y-6 pointer-events-none invisible'
+          : 'opacity-100 translate-y-0'
+      }`}
+    >
       <nav
         aria-label="Main Navigation"
         className="pointer-events-auto relative mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl px-4 py-2 sm:py-3 select-none"
