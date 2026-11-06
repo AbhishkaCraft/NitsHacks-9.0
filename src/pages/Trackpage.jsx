@@ -84,15 +84,6 @@ const TRACKS = [
   },
 ];
 
-      "User-centered interface design, interaction design, creative prototyping, and design systems.",
-    tilt: "rotate-[4.5deg]",
-    zIndex: "z-10",
-    hoverTilt: "hover:rotate-[2deg]",
-    hoverScale: "hover:scale-108 sm:hover:scale-110 md:hover:scale-112",
-    hoverTranslate: "hover:-translate-y-2 sm:hover:-translate-y-3",
-  },
-];
-
 const EMBLEMS = [
   {
     id: "avengers",
