@@ -473,12 +473,6 @@ export default function HeroSection() {
                 <stop offset="0.5" stopColor="#8c0003" />
                 <stop offset="1" stopColor="#1a0000" />
               </linearGradient>
-              <linearGradient id="mobile-beam-cyan" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.9" />
-                <stop offset="30%" stopColor="#38bdf8" stopOpacity="0.65" />
-                <stop offset="65%" stopColor="#38bdf8" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
-              </linearGradient>
               <linearGradient
                 id="mobile-bottom-vignette"
                 x1="0"
@@ -502,9 +496,6 @@ export default function HeroSection() {
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
-              <clipPath id="mobile-beam-clip">
-                <polygon points="360,356 378,356 378,930 70,930" />
-              </clipPath>
             </defs>
 
             {/* A. Procedural Skyline at the bottom edge */}
@@ -672,27 +663,7 @@ export default function HeroSection() {
               </g>
             </g>
 
-            {/* D. Cyan energy glow at base of beam intersecting the city buildings */}
-            <rect
-              x="70"
-              y="720"
-              width="310"
-              height="210"
-              fill="url(#mobile-beam-cyan)"
-              clipPath="url(#mobile-beam-clip)"
-              className="pointer-events-none"
-            />
-
-            {/* E. Foreground buildings inside beam for a unified joint skyline */}
-            <g
-              clipPath="url(#mobile-beam-clip)"
-              opacity="0.65"
-              className="mobile-skyline-near pointer-events-none"
-            >
-              {renderMobileStrip(mobileNearCity, "#0a2233")}
-            </g>
-
-            {/* F. Grounding vignette at bottom */}
+            {/* Grounding vignette at bottom */}
             <rect
               x="0"
               y="870"

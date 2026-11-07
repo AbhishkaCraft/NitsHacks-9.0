@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Ethnocentric Rg';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/ethnocentric.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/6220/ethnocentric%20rg.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ethnocentric';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/ethnocentric.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/6220/ethnocentric%20rg.woff') format('woff');
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -19,6 +37,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .font-tech {
   font-family: var(--font-tech);
+}
+
+.font-ethnocentric {
+  font-family: 'Ethnocentric Rg', 'Ethnocentric', 'Orbitron', sans-serif;
 }
 
 /* Cosmic Glow & Shadows */
