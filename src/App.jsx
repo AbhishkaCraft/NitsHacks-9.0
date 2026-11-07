@@ -9,14 +9,28 @@ import ComingSoon from './pages/ComingSoon'
 import Navbar from './components/Navbar'
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '')
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+      const timer = setTimeout(() => {
+        const delayedEl = document.getElementById(id)
+        if (delayedEl) delayedEl.scrollIntoView({ behavior: 'smooth' })
+      }, 150)
+      return () => clearTimeout(timer)
+    }
+
     window.scrollTo(0, 0)
     if (typeof document !== 'undefined') {
       if (document.documentElement) document.documentElement.scrollTop = 0
       if (document.body) document.body.scrollTop = 0
     }
-  }, [pathname])
+  }, [pathname, hash])
   return null
 }
 
